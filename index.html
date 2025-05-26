@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise de Nomes - IBGE</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        // Configuração da URL base da API
+        const API_BASE_URL = window.location.hostname === 'localhost' 
+            ? 'http://localhost:3000' 
+            : 'https://vitorgooto.github.io/soa-nomes/backend';
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Análise de Nomes - IBGE</h1>
+        
+        <!-- Seção de Evolução do Nome -->
+        <section class="card">
+            <h2>Evolução do Nome</h2>
+            <div class="input-group">
+                <input type="text" id="nomeInput" placeholder="Digite um nome">
+                <button onclick="buscarEvolucaoNome()">Buscar</button>
+            </div>
+            <div class="chart-container">
+                <canvas id="evolucaoNomeChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Seção de Top Nomes por Localidade -->
+        <section class="card">
+            <h2>Top Nomes por Localidade</h2>
+            <div class="input-group">
+                <input type="text" id="codigoLocalidade" placeholder="Digite o código IBGE">
+                <button onclick="buscarTopNomes()">Buscar</button>
+            </div>
+            <div class="table-container">
+                <table id="topNomesTable">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Frequência</th>
+                            <th>Ranking</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Seção de Comparação de Nomes -->
+        <section class="card">
+            <h2>Comparação de Nomes</h2>
+            <div class="input-group">
+                <input type="text" id="nome1Input" placeholder="Primeiro nome">
+                <input type="text" id="nome2Input" placeholder="Segundo nome">
+                <button onclick="compararNomes()">Comparar</button>
+            </div>
+            <div class="chart-container">
+                <canvas id="comparacaoNomesChart"></canvas>
+            </div>
+        </section>
+    </div>
+
+    <script src="scripts/graficoNome.js"></script>
+    <script src="scripts/tabelaLocalidade.js"></script>
+    <script src="scripts/comparacaoGrafico.js"></script>
+</body>
+</html> 
