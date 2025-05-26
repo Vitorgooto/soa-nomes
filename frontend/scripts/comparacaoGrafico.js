@@ -10,7 +10,7 @@ async function compararNomes() {
     }
 
     try {
-        const response = await axios.get(`http://localhost:3000/api/comparar?nome1=${nome1}&nome2=${nome2}`);
+        const response = await axios.get(`${API_BASE_URL}/api/comparar?nome1=${nome1}&nome2=${nome2}`);
         
         if (!response.data.nome1 || !response.data.nome2) {
             throw new Error('Dados incompletos recebidos da API');

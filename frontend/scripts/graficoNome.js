@@ -8,7 +8,7 @@ async function buscarEvolucaoNome() {
     }
 
     try {
-        const response = await axios.get(`http://localhost:3000/api/nome/${nome}`);
+        const response = await axios.get(`${API_BASE_URL}/api/nome/${nome}`);
         const dados = response.data[0].res;
         
         const decadas = dados.map(item => item.periodo);

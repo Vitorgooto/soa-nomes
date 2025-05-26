@@ -12,7 +12,7 @@ async function buscarTopNomes() {
     }
 
     try {
-        const response = await axios.get(`http://localhost:3000/api/top-nomes/${codigo}`);
+        const response = await axios.get(`${API_BASE_URL}/api/top-nomes/${codigo}`);
         
         if (!response.data || !response.data[0] || !response.data[0].res) {
             throw new Error('Dados incompletos recebidos da API');
